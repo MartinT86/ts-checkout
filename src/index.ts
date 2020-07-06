@@ -1,9 +1,7 @@
-type productDetails = [
-  {
+export type productDetails = {
     name: string;
     price: number;
-  }
-];
+  }[];
 
 export const createCheckout = (priceList: productDetails) => {
   return (products: string[]) => {
