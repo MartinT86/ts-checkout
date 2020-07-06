@@ -1,13 +1,15 @@
-type productDetails = {
-    name: string,
-    price: number
-}
+type productDetails = [
+  {
+    name: string;
+    price: number;
+  }
+];
 
 export const createCheckout = (priceList: productDetails) => {
-    return (product?: string) => {
-        if (product) {
-            return priceList.price
-        }
-        return 0
-    }
-}
+  return (products: string[]) => {
+    return products.reduce((a, c) => {
+        const price = priceList.find(x => x.name === c)?.price
+        return a + (price ?? 0)
+    }, 0)
+  };
+};
