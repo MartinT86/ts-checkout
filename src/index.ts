@@ -3,11 +3,18 @@ export type productDetails = {
     price: number;
   }[];
 
+const calculateDiscount = (products: string[]) => {
+    const aDiscount = Math.floor(products.filter(x => x === 'A').length / 3) * 20
+    return aDiscount
+}
+
 export const createCheckout = (priceList: productDetails) => {
   return (products: string[]) => {
-    return products.reduce((a, c) => {
+    const subTotal =  products.reduce((a, c) => {
         const price = priceList.find(x => x.name === c)?.price
         return a + (price ?? 0)
     }, 0)
+    const discount = calculateDiscount(products)
+    return subTotal - discount
   };
 };
