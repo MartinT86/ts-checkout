@@ -23,8 +23,13 @@ describe("Checkout", () => {
     expect(checkout(["A", "B", "C", "D"])).toBe(115);
   });
 
-  it('should remove discounts', () => {
+  it('should remove discounts for A', () => {
     const checkout = createCheckout(priceList);
     expect(checkout(["A", "A", "A"])).toBe(130);
+  });
+
+  it('should remove discounts for B', () => {
+    const checkout = createCheckout(priceList);
+    expect(checkout(["B", "B"])).toBe(45);
   });
 });

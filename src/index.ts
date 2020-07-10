@@ -5,7 +5,8 @@ export type productDetails = {
 
 const calculateDiscount = (products: string[]) => {
     const aDiscount = Math.floor(products.filter(x => x === 'A').length / 3) * 20
-    return aDiscount
+    const bDiscount = Math.floor(products.filter(x => x === 'B').length / 2) * 15
+    return aDiscount + bDiscount
 }
 
 export const createCheckout = (priceList: productDetails) => {
